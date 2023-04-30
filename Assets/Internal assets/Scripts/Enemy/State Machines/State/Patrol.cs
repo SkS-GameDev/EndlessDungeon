@@ -8,21 +8,20 @@ namespace Enemy.State_Machines.State
     {
         #region Variables
 
-        public float TimeStuck;
-
         private readonly Animator _animator;
         private readonly NavMeshAgent _navMeshAgent;
         private readonly Transform _thisTransform;
         private readonly Transform _targetTransform;
         private Vector3 _lastPosition = Vector3.zero;
-        
-        private static readonly int Walk = Animator.StringToHash("Walk");
+        public float TimeStuck;
+
+        private static readonly int WALK = Animator.StringToHash("Walk");
 
         #endregion
 
         #region Constructors
 
-        public Patrol(Animator animator, NavMeshAgent navMeshAgent, Transform thisTransform, ref Transform targetTransform)
+        public Patrol(Animator animator, NavMeshAgent navMeshAgent, Transform thisTransform, Transform targetTransform)
         {
             _animator = animator;
             _navMeshAgent = navMeshAgent;
@@ -41,7 +40,7 @@ namespace Enemy.State_Machines.State
             _navMeshAgent.stoppingDistance = 0f;
             _navMeshAgent.SetDestination(_targetTransform.position);
 
-            _animator.SetBool(Walk, true);
+            _animator.SetBool(WALK, true);
 
             TimeStuck = 0;
         }
@@ -57,7 +56,7 @@ namespace Enemy.State_Machines.State
         {
             _navMeshAgent.enabled = false;
 
-            _animator.SetBool(Walk, false);
+            _animator.SetBool(WALK, false);
         }
 
         #endregion

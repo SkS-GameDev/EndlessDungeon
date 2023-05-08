@@ -7,11 +7,11 @@ namespace Units.Enemy.State_Machines.State
     {
         #region Variables
 
-        public bool attackEnd;
+        public bool EndAttack;
 
         private readonly Animator _animator;
         private readonly Enemy _enemy;
-        private static readonly int ATTACK1 = Animator.StringToHash("Attack1");
+        private readonly static int ATTACK1 = Animator.StringToHash("Attack1");
         private Action<string> _animationTriggerName;
 
         private Func<float> _damage;
@@ -34,7 +34,7 @@ namespace Units.Enemy.State_Machines.State
         {
             _animator.SetBool(ATTACK1, true);
             _enemy.AnimationTriggerName = HandlerAnimationTrigger;
-            attackEnd = false;
+            EndAttack = false;
         }
 
         public void Tick()
@@ -53,14 +53,18 @@ namespace Units.Enemy.State_Machines.State
 
         private void HandlerAnimationTrigger(string animationTriggerName)
         {
-            if (animationTriggerName == "attack")
-                Debug.Log("attack");
-
-            if (animationTriggerName == "attackEnd")
-                Debug.Log("attackEnd");
-
-            if (animationTriggerName == "animationEnd")
-                attackEnd = true;
+            switch (animationTriggerName)
+            {
+                case "attack":
+                    Debug.Log("attack");
+                    break;
+                case "attackEnd":
+                    Debug.Log("attackEnd");
+                    break;
+                case "animationEnd":
+                    EndAttack = true;
+                    break;
+            }
         }
 
         #endregion

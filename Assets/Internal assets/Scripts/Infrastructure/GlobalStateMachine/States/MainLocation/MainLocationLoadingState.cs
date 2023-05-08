@@ -22,6 +22,7 @@ namespace Infrastructure.GlobalStateMachine.States
 
             var asyncOperationHandle =
                 Addressables.LoadSceneAsync((AssetsAddressablesConstants.MAIN_LOCATION_SCENE_NAME));
+
             await asyncOperationHandle.Task;
 
             Context.StateMachine.SwitchState<MainLocationSetUpState>();

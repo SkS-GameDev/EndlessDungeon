@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <MaxHealthPoints>k__BackingField: 100
-  <DamagePoints>k__BackingField: 150
+  <DamagePoints>k__BackingField: 25
   <ProtectionPoints>k__BackingField: 10
